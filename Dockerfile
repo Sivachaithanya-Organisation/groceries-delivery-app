@@ -1,8 +1,13 @@
-FROM node:20-alpine
-WORKDIR /
+
+FROM node:18-alpine
+ 
+WORKDIR /app
+ 
 COPY package.json ./
 RUN npm install
-COPY . .
-RUN npm run build
-EXPOSE 5173
-CMD ["node" , "app.js"]
+ 
+COPY index.html style.css app.js server.js ./
+ 
+EXPOSE 3000
+ 
+CMD ["npm", "start"]
