@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FreshBasket — Grocery Store</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">🛒</span>
+        <span class="logo-text">FreshBasket</span>
+      </div>
+      <nav class="nav">
+        <a href="#categories">Categories</a>
+        <a href="#deals">Deals</a>
+        <a href="#products">Shop</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <div class="search-box">
+          <input type="text" placeholder="Search groceries…" id="searchInput" oninput="filterProducts()" />
+          <span class="search-icon">🔍</span>
+        </div>
+        <button class="cart-btn" onclick="toggleCart()">
+          🛒 Cart <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Fresh. Fast. Delivered.</p>
+      <h1 class="hero-title">Your Daily <br><em>Grocery</em> Store</h1>
+      <p class="hero-sub">Farm-fresh produce, pantry staples, dairy & more — delivered to your door in under 2 hours.</p>
+      <div class="hero-actions">
+        <a href="#products" class="btn-primary">Shop Now</a>
+        <a href="#deals" class="btn-outline">See Today's Deals</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-badge badge-1">🥦 Organic</div>
+      <div class="hero-badge badge-2">🚚 Free Delivery</div>
+      <div class="hero-badge badge-3">⏱ 2-Hour Delivery</div>
+      <div class="hero-image-ring">
+        <div class="fruit-orb">🍎</div>
+        <div class="fruit-orb">🥕</div>
+        <div class="fruit-orb">🥑</div>
+        <div class="fruit-orb">🍋</div>
+        <div class="fruit-orb">🍇</div>
+        <div class="fruit-orb">🥝</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE STRIP -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <span>🌿 100% Organic</span><span>🚚 Free Delivery on ₹499+</span>
+      <span>🥛 Fresh Dairy Daily</span><span>🍓 Seasonal Fruits</span>
+      <span>♻️ Eco Packaging</span><span>🧄 Sourced Locally</span>
+      <span>🌿 100% Organic</span><span>🚚 Free Delivery on ₹499+</span>
+      <span>🥛 Fresh Dairy Daily</span><span>🍓 Seasonal Fruits</span>
+      <span>♻️ Eco Packaging</span><span>🧄 Sourced Locally</span>
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <section class="section" id="categories">
+    <div class="container">
+      <div class="section-header">
+        <h2>Shop by Category</h2>
+        <p>Everything you need, organized for you</p>
+      </div>
+      <div class="categories-grid">
+        <div class="cat-card" onclick="filterByCategory('fruits')" data-cat="fruits">
+          <div class="cat-emoji">🍎</div>
+          <h3>Fruits</h3>
+          <p>Seasonal & exotic</p>
+        </div>
+        <div class="cat-card" onclick="filterByCategory('vegetables')" data-cat="vegetables">
+          <div class="cat-emoji">🥦</div>
+          <h3>Vegetables</h3>
+          <p>Farm-fresh daily</p>
+        </div>
+        <div class="cat-card" onclick="filterByCategory('dairy')" data-cat="dairy">
+          <div class="cat-emoji">🥛</div>
+          <h3>Dairy & Eggs</h3>
+          <p>Pure & natural</p>
+        </div>
+        <div class="cat-card" onclick="filterByCategory('grains')" data-cat="grains">
+          <div class="cat-emoji">🌾</div>
+          <h3>Grains & Rice</h3>
+          <p>Staple pantry picks</p>
+        </div>
+        <div class="cat-card" onclick="filterByCategory('beverages')" data-cat="beverages">
+          <div class="cat-emoji">🧃</div>
+          <h3>Beverages</h3>
+          <p>Juices, tea & more</p>
+        </div>
+        <div class="cat-card" onclick="filterByCategory('snacks')" data-cat="snacks">
+          <div class="cat-emoji">🍪</div>
+          <h3>Snacks</h3>
+          <p>Munchies & treats</p>
+        </div>
+        <div class="cat-card" onclick="filterByCategory('spices')" data-cat="spices">
+          <div class="cat-emoji">🌶️</div>
+          <h3>Spices & Masala</h3>
+          <p>Authentic flavors</p>
+        </div>
+        <div class="cat-card" onclick="filterByCategory('bakery')" data-cat="bakery">
+          <div class="cat-emoji">🍞</div>
+          <h3>Bakery</h3>
+          <p>Freshly baked goods</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEALS BANNER -->
+  <section class="deals-banner" id="deals">
+    <div class="container">
+      <div class="deals-inner">
+        <div class="deal-text">
+          <p class="deal-eyebrow">⚡ Today's Deal</p>
+          <h2>Fresh Fruits Combo</h2>
+          <p>Seasonal fruits pack — Mangoes, Watermelon & Grapes</p>
+          <div class="deal-price">
+            <span class="price-old">₹349</span>
+            <span class="price-new">₹199</span>
+            <span class="discount-badge">43% OFF</span>
+          </div>
+          <button class="btn-primary" onclick="addToCart({name:'Fruits Combo', price:199, emoji:'🍱'})">Grab This Deal</button>
+        </div>
+        <div class="deal-visual">
+          <div class="deal-fruits">🍉🥭🍇🍓🍑</div>
+          <div class="deal-timer" id="dealTimer">Ends in: <span id="countdown">--:--:--</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="section" id="products">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="productsTitle">All Products</h2>
+        <p>Click any category above to filter</p>
+      </div>
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterByCategory('all')">All</button>
+        <button class="filter-btn" onclick="filterByCategory('fruits')">🍎 Fruits</button>
+        <button class="filter-btn" onclick="filterByCategory('vegetables')">🥦 Vegetables</button>
+        <button class="filter-btn" onclick="filterByCategory('dairy')">🥛 Dairy</button>
+        <button class="filter-btn" onclick="filterByCategory('grains')">🌾 Grains</button>
+        <button class="filter-btn" onclick="filterByCategory('beverages')">🧃 Beverages</button>
+        <button class="filter-btn" onclick="filterByCategory('snacks')">🍪 Snacks</button>
+        <button class="filter-btn" onclick="filterByCategory('spices')">🌶️ Spices</button>
+        <button class="filter-btn" onclick="filterByCategory('bakery')">🍞 Bakery</button>
+      </div>
+      <div class="products-grid" id="productsGrid"></div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why-us">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why FreshBasket?</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon">🌱</div>
+          <h3>100% Organic</h3>
+          <p>Certified organic produce sourced directly from trusted local farms.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">🚚</div>
+          <h3>2-Hour Delivery</h3>
+          <p>Order by noon, get it by dinner. We deliver 7 days a week.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">💳</div>
+          <h3>Best Prices</h3>
+          <p>Direct farm-to-door pricing with no middlemen markups.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">♻️</div>
+          <h3>Eco Packaging</h3>
+          <p>100% biodegradable packaging because the planet matters.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo"><span class="logo-icon">🛒</span><span class="logo-text">FreshBasket</span></div>
+          <p class="footer-tagline">Bringing the farm to your table, every day.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul><li><a href="#categories">Categories</a></li><li><a href="#deals">Deals</a></li><li><a href="#products">All Products</a></li></ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>📍 Hyderabad, India</p>
+          <p>📞 +91 98765 43210</p>
+          <p>✉️ hello@freshbasket.in</p>
+        </div>
+        <div>
+          <h4>Newsletter</h4>
+          <p>Get weekly deals in your inbox.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="your@email.com" />
+            <button>Subscribe</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 FreshBasket. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CART DRAWER -->
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems"><p class="empty-cart">Your cart is empty 🛒</p></div>
+    <div class="cart-footer">
+      <div class="cart-total">Total: <strong id="cartTotal">₹0</strong></div>
+      <button class="btn-primary checkout-btn" onclick="checkout()">Proceed to Checkout →</button>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
