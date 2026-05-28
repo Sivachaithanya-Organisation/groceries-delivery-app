@@ -60,4 +60,4 @@ jobs:
           port: 22
           script: |
             cd tanusha-project-docs
-            ansible-playbook tanusha-project-playbook.yaml -vv
+            ansible-playbook tanusha-project-playbook.yaml --tags=script -vv
