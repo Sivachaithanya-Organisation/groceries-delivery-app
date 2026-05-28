@@ -1,0 +1,29 @@
+---
+- name: Prerequisities
+  hosts: all
+  become: true
+  become_method: sudo
+  tags:
+    - install
+  tasks:
+    - name: copy the install script ( aws and docker )
+      copy:
+        src: /home/ansibleadmin/tanusha-project-docs/install.sh
+        dest: /home/ansibleadmin/tanusha-docs/
+        mode: '0755'
+    - name: run the install script
+      become: yes
+      shell: /home/ansibleadmin/tanusha-docs/install.sh
+
+- name: deployment
+  hosts: all
+  tags:
+    - script
+  tasks:
+    - name: copy the docker script (docker pull and run)
+      copy:
+        src: /home/ansibleadmin/tanusha-project-docs/script.sh
+        dest: /home/ansibleadmin/tanusha-docs/
+        mode: '0755'
+    - name: run the docker script
+      shell: /home/ansibleadmin/tanusha-docs/script.sh

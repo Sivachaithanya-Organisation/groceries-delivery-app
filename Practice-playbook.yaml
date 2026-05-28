@@ -1,0 +1,52 @@
+---
+- name: play-1
+  hosts: all
+  become: true
+  become_method: sudo
+  tag:
+    - vijay
+  tasks:
+    - name: copy the file
+      copy:
+        src=/home/ansibleadmin/tanusha-docs/tansuha-devops
+        dest=/home/ansibleadmin/tanusha-docs/
+    - name: installing git
+      yum: name=git state=latest
+- name: play-2
+  hosts: all
+  become: true
+  become_method: sudo
+  tag:
+    - purnima
+  tasks:
+    - name: copy the file
+      copy:
+        src=/home/ansibleadmin/tanusha-docs/tansuha-kubernetes
+        dest=/home/ansibleadmin/tanusha-docs/
+    - name: installing httpd
+      service: name=httpd state=started
+- name: play-3
+  hosts: all
+  become: true
+  become_method: sudo
+  tag:
+    - sailaja
+  tasks:
+    - name: copy the file
+      copy:
+        src=/home/ansibleadmin/tanusha-docs/tansuha-kubernetes
+        dest=/home/ansibleadmin/tanusha-docs/
+    - name: installing httpd
+      service: name=httpd state=started
+
+
+[paytm]
+1.2.3.45
+3.4.22.2
+
+[makemytrip]
+44.5.3.4
+55.2.1.2
+
+[goibibo]
+3.55.6.2
