@@ -59,4 +59,4 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
           script: |
-            ansible-playbook multi-deployment-playbook.yml -vv
+            ansible-playbook multi-deployment-playbook.yml --tags=deploy -vv
