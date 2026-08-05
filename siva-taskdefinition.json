@@ -1,9 +1,9 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-west-2:794934876309:task-definition/siva-taskdefinition:@{{ github.sha }}",
+    "taskDefinitionArn": "arn:aws:ecs:us-west-2:794934876309:task-definition/siva-taskdefinition:${{ github.sha }}",
     "containerDefinitions": [
         {
             "name": "siva-container",
-            "image": "794934876309.dkr.ecr.us-west-2.amazonaws.com/siva-ansible-ecr@{{ github.sha }}",
+            "image": "794934876309.dkr.ecr.us-west-2.amazonaws.com/siva-ecs:${{ github.sha }}",
             "cpu": 0,
             "portMappings": [
                 {
