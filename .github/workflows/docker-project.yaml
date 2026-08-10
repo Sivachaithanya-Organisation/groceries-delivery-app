@@ -56,6 +56,6 @@ jobs:
       - name: without built in actions
         run: |
           aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 794934876309.dkr.ecr.us-west-2.amazonaws.com
-          docker build -t siva-docker -f RR-Technosoft-LMS/rr-technosoft-lms/
+          docker build -t siva-docker .
           docker tag siva-docker:latest 794934876309.dkr.ecr.us-west-2.amazonaws.com/siva-docker:${{ github.sha }}
           docker push 794934876309.dkr.ecr.us-west-2.amazonaws.com/siva-docker:${{ github.sha }}
