@@ -1,0 +1,61 @@
+name: docker project pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      # checking out the latest code from repository
+      - name: XYZ # steps name
+        uses: actions/checkout@v7
+
+      # Logging into the AWS CLOUD
+      - name: Configure AWS Credentials 2
+        uses: aws-actions/configure-aws-credentials@v6.2.3
+        with:
+          aws-region: us-west-2
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      
+      # Login into the AWS ECR
+      - name: Login to Amazon ECR
+        id: ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      # docker build and push
+      - name: Build & Push Docker Image 🐳
+        id: image
+        uses: deploy-actions/push-to-ecr@v1
+        with:
+          repository-name: siva-docker
+          # dockerfile-path: RR-Technosoft-LMS/rr-technosoft-lms/
+          image-tag: ${{ github.sha }}
+
+#  without plugins
+
+  # buildwithoutplugins:
+  #   runs-on: ubuntu-latest
+  #   steps:
+
+  #     - name: XYZ # steps name
+  #       uses: actions/checkout@
+      
+  #     # Logging into the AWS CLOUD
+  #     - name: Configure AWS Credentials 2
+  #       uses: aws-actions/configure-aws-credentials@v6.2.3
+  #       with:
+  #         aws-region: us-west-2
+  #         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+  #         aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+
+  #     - name: without built in actions
+  #       run: |
+  #         aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 794934876309.dkr.ecr.us-west-2.amazonaws.com
+  #         docker build -t siva-docker -f RR-Technosoft-LMS/rr-technosoft-lms/
+  #         docker tag siva-docker:latest 794934876309.dkr.ecr.us-west-2.amazonaws.com/siva-docker:${{ github.sha }}
+  #         docker push 794934876309.dkr.ecr.us-west-2.amazonaws.com/siva-docker:${{ github.sha }}
